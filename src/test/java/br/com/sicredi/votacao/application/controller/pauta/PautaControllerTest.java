@@ -38,7 +38,7 @@ public class PautaControllerTest {
 
         Mockito.when(pautaGateway.execute(Mockito.any(PautaRequest.class))).thenReturn(pautaResponse);
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/v1/pauta")
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/pauta")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(pautaRequest)))
                 .andExpect(MockMvcResultMatchers.status().isCreated())
@@ -48,7 +48,7 @@ public class PautaControllerTest {
 
     @Test
     public void testCadastrarPautaWhenNullPautaRequestThenReturnBadRequest() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.post("/v1/pauta")
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/pauta")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(null)))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest());

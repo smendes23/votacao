@@ -42,7 +42,7 @@ public class VotoControllerTest {
         Mockito.when(votoGateway.execute(Mockito.any())).thenReturn(votoDTO);
 
         // Act & Assert
-        mockMvc.perform(MockMvcRequestBuilders.post("/v1/votos")
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/votos")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(votoDTO)))
                 .andExpect(MockMvcResultMatchers.status().isCreated())
@@ -51,7 +51,7 @@ public class VotoControllerTest {
 
     @Test
     public void testReceberVotoWhenNullVotoDTOThenReturnBadRequest() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.post("/v1/votos")
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/votos")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(null)))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest());
