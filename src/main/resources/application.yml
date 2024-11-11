@@ -1,0 +1,33 @@
+server:
+    port: 8084
+spring:
+    datasource:
+        url: jdbc:postgresql://localhost:5432/cooperativismo
+        username: cdelivery_dev
+        password: cdelivery_dev
+        driver-class-name: org.postgresql.Driver
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: true
+        properties:
+            hibernate:
+                format_sql: true
+    threads:
+        virtual:
+            enabled: true
+
+kafka:
+    bootstrap-servers: localhost:9092
+    topic: voting-results
+
+feign:
+    client:
+        config:
+            default:
+                connectTimeout: 5000
+                readTimeout: 5000
+flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
